@@ -1,0 +1,66 @@
+#include <iostream>
+#include <tuple>
+
+using namespace std;
+
+int power() {
+	cout << "Enter the power to derive: " << flush;
+	int power;
+	cin >> power;
+	return power;
+}
+
+int coeff() {
+	cout << "Enter the coeff to derive: " << flush;
+	int coeff;
+	cin >> coeff;
+	return coeff;
+}
+
+int times() {
+	cout << "Enter the times to derive: " << flush;
+	int times;
+	cin >> times;
+	return times;
+}
+
+
+tuple<int, int, int> myTripleReturningFunc(int p, int c, int t)
+{
+	if (p <= 0) {
+		return make_tuple(p, 0, t);
+	}
+	else {
+		if (t <= 0) {
+			return make_tuple(p, c, t);
+		}
+		else {
+			int peo, coe, tim;
+			int(poe, coe, tim) = myTripleReturningFunc(p--, c, t--);
+			return make_tuple(p, c + p, t);
+		}
+	}
+}
+
+
+int main() {
+
+	//get input for the values
+	int p = power();
+	int c = coeff();
+	int t = times();
+
+
+	//derive the values
+
+	myTripleReturningFunc(p, c, t);
+	int po, co, ti;
+	tie(po, co, ti) = myTripleReturningFunc(p, c, t);
+
+
+	//return the derived values
+	cout << "The power of the derivative is: " << po << endl;
+	cout << "The coeff of the derivative is: " << co << endl;
+
+	return 0;
+}
