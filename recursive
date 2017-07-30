@@ -37,7 +37,7 @@ tuple<int, int, int> myTripleReturningFunc(int p, int c, int t)
 		else {
 			int peo, coe, tim;
 			int(poe, coe, tim) = myTripleReturningFunc(p--, c, t--);
-			return make_tuple(p, c + p, t);
+			return make_tuple(poe, coe + poe, tim);
 		}
 	}
 }
