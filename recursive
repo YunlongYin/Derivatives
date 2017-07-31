@@ -25,7 +25,7 @@ int times() {
 }
 
 
-tuple<int, int, int> myTripleReturningFunc(int p, int c, int t)
+tuple<int, int, int> derivative(int p, int c, int t)
 {
 	if (p <= 0) {
 		return make_tuple(p, 0, t);
@@ -35,9 +35,10 @@ tuple<int, int, int> myTripleReturningFunc(int p, int c, int t)
 			return make_tuple(p, c, t);
 		}
 		else {
-			int peo, coe, tim;
-			int(poe, coe, tim) = myTripleReturningFunc(p--, c, t--);
-			return make_tuple(poe, coe + poe, tim);
+			int pow, coe, tim;
+			int a = c + p;
+			tie(pow, coe, tim) = derivative(--p, a, --t);
+			return make_tuple(pow, coe, tim);
 		}
 	}
 }
@@ -50,15 +51,11 @@ int main() {
 	int c = coeff();
 	int t = times();
 
-
 	//derive the values
-
-	myTripleReturningFunc(p, c, t);
 	int po, co, ti;
-	tie(po, co, ti) = myTripleReturningFunc(p, c, t);
+	tie(po, co, ti) = derivative(p, c, t);
 
-
-	//return the derived values
+	//print the derived values
 	cout << "The power of the derivative is: " << po << endl;
 	cout << "The coeff of the derivative is: " << co << endl;
 
