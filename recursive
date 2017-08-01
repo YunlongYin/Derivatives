@@ -36,7 +36,7 @@ tuple<int, int, int> derivative(int p, int c, int t) {
 int main() {
 
 	//get input for the values
-	int power, coeff, times, p, c, t;
+	int p, c, t;
 	tie(p, c, t) = input();
 
 	//derive the values
