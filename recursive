@@ -4,7 +4,7 @@
 using namespace std;
 
 int power() {
-	cout << "Enter the power to derive: " << flush;
+	cout << "Enter the positive power to derive: " << flush;
 	int power;
 	cin >> power;
 	return power;
@@ -27,19 +27,14 @@ int times() {
 
 tuple<int, int, int> derivative(int p, int c, int t)
 {
-	if (p <= 0) {
-		return make_tuple(p, 0, t);
+	if (t <= 0) {
+		return make_tuple(p, c, t);
 	}
 	else {
-		if (t <= 0) {
-			return make_tuple(p, c, t);
-		}
-		else {
-			int pow, coe, tim;
-			int a = c + p;
-			tie(pow, coe, tim) = derivative(--p, a, --t);
-			return make_tuple(pow, coe, tim);
-		}
+		int pow, coe, tim;
+		int derivedCoeff = c * p;
+		tie(pow, coe, tim) = derivative(--p, derivedCoeff, --t);
+		return make_tuple(pow, coe, tim);
 	}
 }
 
