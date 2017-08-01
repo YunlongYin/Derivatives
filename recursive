@@ -3,30 +3,24 @@
 
 using namespace std;
 
-int power() {
+tuple<int, int, int> input() {
+
+	int power, coeff, times;
+
 	cout << "Enter the positive power to derive: " << flush;
-	int power;
 	cin >> power;
-	return power;
-}
 
-int coeff() {
 	cout << "Enter the coeff to derive: " << flush;
-	int coeff;
 	cin >> coeff;
-	return coeff;
-}
 
-int times() {
 	cout << "Enter the times to derive: " << flush;
-	int times;
 	cin >> times;
-	return times;
+
+	return make_tuple(power, coeff, times);
 }
 
+tuple<int, int, int> derivative(int p, int c, int t) {
 
-tuple<int, int, int> derivative(int p, int c, int t)
-{
 	if (t <= 0) {
 		return make_tuple(p, c, t);
 	}
@@ -42,9 +36,8 @@ tuple<int, int, int> derivative(int p, int c, int t)
 int main() {
 
 	//get input for the values
-	int p = power();
-	int c = coeff();
-	int t = times();
+	int power, coeff, times, p, c, t;
+	tie(p, c, t) = input();
 
 	//derive the values
 	int po, co, ti;
